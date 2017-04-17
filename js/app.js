@@ -1,3 +1,4 @@
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -41,18 +42,18 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 200;
     this.y = 330;
-}
+};
 
 //checking if there is any collision the method is from MDN and it's called 2D collision detection
 Player.prototype.collisionCheck = function() {
 
     var enemySpace = null;
     var playerSpace = {
-        x: player.x,
-        y: player.y,
+        x: this.x,
+        y: this.y,
         width: 50,
         height: 50
-    }
+    };
 
     for (var enemy of allEnemies) {
         enemySpace = {
@@ -60,18 +61,18 @@ Player.prototype.collisionCheck = function() {
             y: enemy.y,
             width: 50,
             height: 50
-        }
+        };
 
         if (enemySpace.x < playerSpace.x + playerSpace.width &&
             enemySpace.x + enemySpace.width > playerSpace.x &&
             enemySpace.y < playerSpace.y + playerSpace.height &&
             enemySpace.height + enemySpace.y > playerSpace.y) {
 
-            player.x = 200;
-            player.y = 330;
+            this.x = 200;
+            this.y = 330;
         }
     }
-}
+};
 //resting the player postion to start point
 
 Player.prototype.update = function() {
